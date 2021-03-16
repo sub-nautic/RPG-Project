@@ -27,11 +27,13 @@ namespace RPG.Control
             foreach(RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if(!GetComponent<Fighter>().CanAttack(target)) continue; //przerwya foreach i uznaje resztę "hits" jako true
+                if (target == null) continue;
+
+                if (!GetComponent<Fighter>().CanAttack(target.gameObject)) continue; //przerwya foreach i uznaje resztę "hits" jako true
                 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().Attack(target.gameObject);
                 }
                 return true; // zwracamy bool pod if'em ponieważ umożliwia inne opcji interakcji z tą funkcją
             }
