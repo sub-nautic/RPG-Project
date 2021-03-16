@@ -18,7 +18,7 @@ namespace RPG.Control
         {
             if(InteractWithCombat()) return;
             if(InteractWithMovement()) return;
-            else print("ntd :|");
+            else print("nothing to do :|");
         }
 
         bool InteractWithCombat()
@@ -27,7 +27,7 @@ namespace RPG.Control
             foreach(RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if(target == null) continue; //przerwya foreach i uznaje resztę "hits" jako true
+                if(!GetComponent<Fighter>().CanAttack(target)) continue; //przerwya foreach i uznaje resztę "hits" jako true
                 
                 if (Input.GetMouseButtonDown(1))
                 {

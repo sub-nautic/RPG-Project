@@ -30,7 +30,7 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
             
             if(target == null) return;
-            if(target.IsDead()) return;
+            if(target.IsDead()) return;            
 
             if (!GetIsInRange())
             {
@@ -39,24 +39,38 @@ namespace RPG.Combat
             else
             {
                 myMover.Cancel();
-                AttackBehaviour();                           
+                AttackBehaviour();          
             }
         }
 
         void AttackBehaviour()
-        {            
+        {
+            transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                //this will trigger hit event
-                myAnimator.SetTrigger("attack");
-                timeSinceLastAttack = 0f;                            
+                TriggerAttack();
+                timeSinceLastAttack = 0f;
             }
         }
-        
+
+        void TriggerAttack()
+        {
+            myAnimator.ResetTrigger("stopAttack");
+            myAnimator.SetTrigger("attack"); //this will trigger hit event
+        }
+
         // Animation Event
         void Hit()
         {
+            if(target == null) return;
             target.TakeDamage(weaponDamage);
+        }
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if(combatTarget == null) return false;
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
         }
 
         public void Attack(CombatTarget combatTarget)
@@ -67,10 +81,16 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            myAnimator.SetTrigger("stopAttack");
+            StopAttack();
             target = null;
         }
-        
+
+        private void StopAttack()
+        {
+            myAnimator.ResetTrigger("attack");
+            myAnimator.SetTrigger("stopAttack");
+        }
+
         bool GetIsInRange()
         {
             return Vector3.Distance(transform.position, target.transform.position) <= weaponRange;
