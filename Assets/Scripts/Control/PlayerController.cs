@@ -53,7 +53,7 @@ namespace RPG.Control
             {
                 if (Input.GetMouseButton(1))
                 {
-                    myMover.StartMoveAction(hit.point);
+                    myMover.StartMoveAction(hit.point, 1f); // 1f full speeed
                 }
                 return true;
             }

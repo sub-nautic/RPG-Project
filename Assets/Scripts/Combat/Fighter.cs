@@ -34,7 +34,7 @@ namespace RPG.Combat
 
             if (!GetIsInRange())
             {
-                myMover.MoveTo(target.transform.position);
+                myMover.MoveTo(target.transform.position, 1f); //1f full speed
             }
             else
             {
