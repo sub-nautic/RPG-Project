@@ -67,9 +67,9 @@ namespace RPG.Movement
             //casting method becouse you shouldn't use (object state) as SerializableVector3 in this function
             SerializableVector3 position = (SerializableVector3)state;
 
-            myNav.enabled = false; //if you use nav mesh agent, this protect from some errors
+            GetComponent<NavMeshAgent>().enabled = false; //if you use nav mesh agent, this protect from some errors
             transform.position = position.ToVector();
-            myNav.enabled = true;
+            GetComponent<NavMeshAgent>().enabled = true;
         }
     }
 }
