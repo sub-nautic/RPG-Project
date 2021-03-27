@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8461801623817991264}
   - component: {fileID: 5406228838006688867}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: Fireball Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,6 +50,10 @@ MonoBehaviour:
   isHoming: 1
   hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db,
     type: 3}
+  maxLifeTime: 10
+  destroyOnHit:
+  - {fileID: 4368220553959768134}
+  lifeAfterImpact: 0.2
 --- !u!65 &5406228838006688867
 BoxCollider:
   m_ObjectHideFlags: 0
