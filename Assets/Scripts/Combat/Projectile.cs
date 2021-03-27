@@ -8,6 +8,7 @@ namespace RPG.Combat
     {
         [SerializeField] float speed = 1f;
         [SerializeField] bool isHoming = true;
+        [SerializeField] GameObject hitEffect = null;
         float damage = 0f;
         Health target = null;
 
@@ -49,6 +50,11 @@ namespace RPG.Combat
             if (target.IsDead()) return;
             
             target.TakeDamage(damage);
+            
+            if(hitEffect != null)
+            {
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
