@@ -10,10 +10,27 @@ namespace RPG.Combat
         float damage = 0f;
         Health target = null;
 
+        bool lookAtTarget = false;
+
         void Update()
         {
-            if(target == null) return;
+            //In porgress!
             
+            if (target == null) return;
+            if(!lookAtTarget)
+            {
+                transform.LookAt(GetAimLocation());
+                lookAtTarget = true;
+            }
+            
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            //Homing();
+        }
+
+        void Homing()
+        {
+            if (target == null) return;
+
             transform.LookAt(GetAimLocation());
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
