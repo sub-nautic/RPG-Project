@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BowEnemy
   m_EditorClassIdentifier: 
   weaponDamage: 5
-  weaponRange: 12
+  weaponRange: 9
   equippedPrefab: {fileID: 6300277571440685588, guid: 495f22b064f94fd4bbf5accf31f5f804,
     type: 3}
   animatorOverride: {fileID: 22100000, guid: 75ec23f3d5eadeb4ea0718b47353edcf, type: 2}
