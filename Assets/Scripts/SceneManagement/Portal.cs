@@ -22,7 +22,7 @@ namespace RPG.SceneManagement
         
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag == "Player")
+            if(other.tag == "Player")
             {
                 StartCoroutine(Transition());
             }
@@ -39,10 +39,10 @@ namespace RPG.SceneManagement
             DontDestroyOnLoad(gameObject);
             
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
 
             yield return fader.FadeOut(fadeOutTime);
 
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
             wrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
@@ -53,7 +53,7 @@ namespace RPG.SceneManagement
             UpdatePlayer(otherPortal);
 
             wrapper.Save();
-            
+
             yield return new WaitForSeconds(fadeWaitTime);
             yield return fader.FadeIn(fadeInTime);
             

@@ -1,33 +1,28 @@
-using RPG.Movement;
-using RPG.Core;
 using UnityEngine;
 using System;
+using RPG.Movement;
+using RPG.Core;
+using RPG.Saving;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-        [SerializeField] Weapon defaultWeapon = null;      
+        [SerializeField] Weapon defaultWeapon = null; 
         
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon = null;
 
-        Mover myMover;
-        ActionScheduler myActionScheduler;
-
-        Animator myAnimator;
-        
         void Start()
         {
-            myMover = GetComponent<Mover>();
-            myActionScheduler = GetComponent<ActionScheduler>();
-            myAnimator = GetComponent<Animator>();
-
-            EquipWeapon(defaultWeapon);
+            if(currentWeapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
         }
 
         void Update()
@@ -35,15 +30,15 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
             
             if(target == null) return;
-            if(target.IsDead()) return;            
+            if(target.IsDead()) return;
 
             if (!GetIsInRange())
             {
-                myMover.MoveTo(target.transform.position, 1f); //1f full speed
+                GetComponent<Mover>().MoveTo(target.transform.position, 1f); //1f full speed
             }
             else
             {
-                myMover.Cancel();
+                GetComponent<Mover>().Cancel();
                 AttackBehaviour();          
             }
         }
@@ -51,7 +46,7 @@ namespace RPG.Combat
         public void EquipWeapon(Weapon weapon)
         {
             currentWeapon = weapon;
-            weapon.Spawn(rightHandTransform, leftHandTransform, myAnimator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, GetComponent<Animator>());
         }
 
         void AttackBehaviour()
@@ -66,8 +61,8 @@ namespace RPG.Combat
 
         void TriggerAttack()
         {
-            myAnimator.ResetTrigger("stopAttack");
-            myAnimator.SetTrigger("attack"); //this will trigger hit event
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack"); //this will trigger hit event
         }
 
         // Animation Event
@@ -103,7 +98,7 @@ namespace RPG.Combat
 
         public void Attack(GameObject combatTarget)
         {
-            myActionScheduler.StartAction(this);
+            GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
         }
 
@@ -111,13 +106,25 @@ namespace RPG.Combat
         {
             StopAttack();
             target = null;
-            myMover.Cancel();
+            GetComponent<Mover>().Cancel();
         }
 
         private void StopAttack()
         {
-            myAnimator.ResetTrigger("attack");
-            myAnimator.SetTrigger("stopAttack");
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
+        }
+
+        public object CaptureState()
+        {
+            return currentWeapon.name;
+        }
+
+        public void RestoreState(object state)
+        {
+            string weaponName = (string)state;
+            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            EquipWeapon(weapon);
         }
     }
 }

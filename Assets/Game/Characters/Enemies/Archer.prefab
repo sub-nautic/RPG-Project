@@ -13,6 +13,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 173d8156f40e0e446aa3201f91d9c3fc,
         type: 2}
+    - target: {fileID: 1480380467776936522, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: BowEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2567125510136977123, guid: b254f38efad99fc449e9bf2951586c95,
         type: 3}
       propertyPath: chaseDistance

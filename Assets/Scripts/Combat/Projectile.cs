@@ -60,7 +60,7 @@ namespace RPG.Combat
             
             if(hitEffect != null)
             {
-                Instantiate(hitEffect, transform.position, Quaternion.identity);
+                Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
 
             //destroy this objects on trigger immediately and then rest after some time

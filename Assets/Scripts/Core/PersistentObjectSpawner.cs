@@ -12,7 +12,7 @@ namespace RPG.Core
         
         void Awake()
         {
-            if(hasSpawned){ return; }
+            if(hasSpawned) return;
 
             SpawnPersistentObjects();
             
