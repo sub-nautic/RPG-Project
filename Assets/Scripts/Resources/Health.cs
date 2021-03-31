@@ -30,6 +30,8 @@ namespace RPG.Resources
 
         public void TakeDamage(GameObject instigator, float damage)
         {
+            Debug.Log(gameObject.name + " took damage: " + damage);
+            
             // jeżeli wartość damage jest wyższa niż health zwraca 0f
             healthPoints = Mathf.Max(healthPoints - damage, 0f);
             if(healthPoints == 0f)
@@ -37,6 +39,16 @@ namespace RPG.Resources
                 Die();
                 AwardExperience(instigator);
             }
+        }
+
+        public float GetHealthPoints()
+        {
+            return healthPoints;
+        }
+
+        public float GetMaxHealthPoints()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         public float GetPercentage()
