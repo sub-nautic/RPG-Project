@@ -7,6 +7,7 @@ namespace RPG.Combat
     public class Weapon : ScriptableObject
     {
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] float percentageBonus = 0f;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] GameObject equippedPrefab = null;
         [SerializeField] AnimatorOverrideController animatorOverride = null;
@@ -75,6 +76,12 @@ namespace RPG.Combat
         {
             return weaponDamage;
         }
+
+        public float GetPercentageBonus()
+        {
+            return percentageBonus;
+        }
+
         public float GetRange()
         {
             return weaponRange;
