@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameDevTV.Utils;
 using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
@@ -24,7 +25,7 @@ namespace RPG.Control
         Mover mover;
         GameObject player;
 
-        Vector3 guardPosition;
+        LazyValue<Vector3> guardPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
@@ -34,12 +35,19 @@ namespace RPG.Control
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             mover = GetComponent<Mover>();
-            player = GameObject.FindWithTag("Player");            
+            player = GameObject.FindWithTag("Player");  
+
+            guardPosition = new LazyValue<Vector3>(GetGuardPosition);          
         }
-        
+
+        Vector3 GetGuardPosition()
+        {
+            return transform.position;
+        }
+
         void Start()
         {
-            guardPosition = transform.position;
+            guardPosition.ForceInit();
         }
 
         void Update()
@@ -71,7 +79,7 @@ namespace RPG.Control
 
         private void PatrolBehaviour()
         {
-            Vector3 nextPosition = guardPosition;
+            Vector3 nextPosition = guardPosition.value;
 
             if(patrolPath != null)
             {

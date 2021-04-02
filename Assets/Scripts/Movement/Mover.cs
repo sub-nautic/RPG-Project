@@ -23,11 +23,6 @@ namespace RPG.Movement
             myActionScheduler = GetComponent<ActionScheduler>();
         }
 
-        void Start()
-        {
-            
-        }
-
         void Update()
         {
             myNav.enabled = !health.IsDead();
