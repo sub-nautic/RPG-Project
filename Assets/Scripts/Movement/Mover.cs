@@ -15,12 +15,17 @@ namespace RPG.Movement
         ActionScheduler myActionScheduler;
         Health health;
 
-        void Start()
+        void Awake()
         {
             myNav = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
             myAnimator = GetComponent<Animator>();
             myActionScheduler = GetComponent<ActionScheduler>();
-            health = GetComponent<Health>();
+        }
+
+        void Start()
+        {
+            
         }
 
         void Update()
@@ -71,6 +76,7 @@ namespace RPG.Movement
             GetComponent<NavMeshAgent>().enabled = false; //if you use nav mesh agent, this protect from some errors
             transform.position = position.ToVector();
             GetComponent<NavMeshAgent>().enabled = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 }

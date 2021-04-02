@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BowEnemy
   m_EditorClassIdentifier: 
   weaponDamage: 5
+  percentageBonus: 0
   weaponRange: 9
   equippedPrefab: {fileID: 6300277571440685588, guid: 495f22b064f94fd4bbf5accf31f5f804,
     type: 3}
