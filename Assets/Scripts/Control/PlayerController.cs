@@ -10,15 +10,7 @@ namespace RPG.Control
     public class PlayerController : MonoBehaviour
     {
         Mover myMover;
-        Health health;
-
-        enum CursorType
-        {
-            None,
-            Movement,
-            Combat,
-            UI
-        }
+        Health health;        
 
         [System.Serializable]
         struct CursorMapping
@@ -45,7 +37,7 @@ namespace RPG.Control
                 return;
             }
             
-            if(InteractWithCombat()) return;
+            if(InteractWitchComponent()) return;
             if(InteractWithMovement()) return;
                         
             SetCursor(CursorType.None);
@@ -62,22 +54,20 @@ namespace RPG.Control
             return false;
         }
 
-        bool InteractWithCombat()
+        bool InteractWitchComponent()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach(RaycastHit hit in hits)
+            foreach (RaycastHit hit in hits)
             {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (target == null) continue;
-
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject)) continue; //continue przerwya foreach i uznaje resztę "hits" jako true
-
-                if (Input.GetMouseButtonDown(1))
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach(IRaycastable raycastable in raycastables)
                 {
-                    GetComponent<Fighter>().Attack(target.gameObject);
+                    if(raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
                 }
-                SetCursor(CursorType.Combat);
-                return true; // zwracamy bool pod if'em ponieważ umożliwia inne opcji interakcji z tą funkcją
             }
             return false;
         }
