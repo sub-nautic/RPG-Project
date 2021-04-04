@@ -42,6 +42,8 @@ MonoBehaviour:
   - type: 4
     texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
+  maxNavMeshProjectionDistance: 1
+  maxNavPathLength: 40
 --- !u!114 &3967120793948236354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +64,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3830412325632798423}
     m_Modifications:
+    - target: {fileID: 162502, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 191330, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
       propertyPath: m_Name
       value: Character_Knights_Soldier_02
@@ -171,6 +177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: uniqueIdentifier
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459562568297710344, guid: 23e89d0a093980545acd552b33b0eb60,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5235298550187175242, guid: 23e89d0a093980545acd552b33b0eb60,
         type: 3}

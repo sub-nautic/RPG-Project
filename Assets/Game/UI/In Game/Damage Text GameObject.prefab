@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4505833242859046973}
   - component: {fileID: 4165596621687608051}
   - component: {fileID: 2322843598234223272}
+  - component: {fileID: 574518802296808110}
   m_Layer: 5
   m_Name: Damage Dispay Canvas
   m_TagString: Untagged
@@ -142,6 +143,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &574518802296808110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319857677912905699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500406985e414f0419bfaf21ed0426c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetToDestroy: {fileID: 8074554635470330646}
 --- !u!1 &4128705860556969561
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,3 +277,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bef61a50e7be7b42a56e7b3ea77f954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageText: {fileID: 3955235124793356323}
