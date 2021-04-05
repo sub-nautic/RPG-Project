@@ -5528,6 +5528,71 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440830561145482951, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6623717465966107778, guid: b254f38efad99fc449e9bf2951586c95,
         type: 3}
       propertyPath: m_Name
