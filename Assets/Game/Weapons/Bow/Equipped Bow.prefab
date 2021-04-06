@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6300277571440685591}
+  - component: {fileID: 6693714339821548434}
   m_Layer: 0
-  m_Name: Bow
+  m_Name: Equipped Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6693714339821548434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6300277571440685588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0440ef1e76b670e41935d7b47a864d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6300277571998319558
 PrefabInstance:
   m_ObjectHideFlags: 0
