@@ -45,6 +45,7 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   patrolSpeedFraction: 0.2
+  shoutDistance: 5
 --- !u!1001 &1480380467124483093
 PrefabInstance:
   m_ObjectHideFlags: 0

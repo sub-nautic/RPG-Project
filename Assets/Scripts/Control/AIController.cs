@@ -20,6 +20,8 @@ namespace RPG.Control
         [SerializeField] float waypointTolerance = 1f;
         [Range (0f, 1f)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
+        [Range(0f,100f)][Tooltip("Radius for aggro to calling nerbay enemies")]
+        [SerializeField] float shoutDistance = 5f;
         
         Fighter fighter;
         Health health;
@@ -129,6 +131,20 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0f;
             fighter.Attack(player);
+
+            AggrevateNearbyEnemies();
+        }
+
+        void AggrevateNearbyEnemies()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
+            foreach(RaycastHit hit in hits)
+            {
+                AIController nerbyEnemy = hit.collider.GetComponent<AIController>();
+                if(nerbyEnemy == null) continue;
+                
+                nerbyEnemy.Aggrevate();                           
+            }
         }
 
         bool IsAggrevated()

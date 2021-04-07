@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: defaultWeaponName
       value: BowEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1480380467776936522, guid: b254f38efad99fc449e9bf2951586c95,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2567125510136977123, guid: b254f38efad99fc449e9bf2951586c95,
         type: 3}
       propertyPath: chaseDistance
