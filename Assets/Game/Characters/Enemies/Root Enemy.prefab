@@ -38,7 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6dc1302fa4287341a27bc96f07feee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 5
+  chaseDistance: 13
   suspicionTime: 5
   dwellingAtWaypointTime: 3
   patrolPath: {fileID: 0}
@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 2459562568297710344, guid: 23e89d0a093980545acd552b33b0eb60,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5235298550187175242, guid: 23e89d0a093980545acd552b33b0eb60,
         type: 3}

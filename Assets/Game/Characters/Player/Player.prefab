@@ -173,6 +173,10 @@ PrefabInstance:
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 3570277522489553225}
+    - target: {fileID: 690286175, guid: 23e89d0a093980545acd552b33b0eb60, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1642385515239123860, guid: 23e89d0a093980545acd552b33b0eb60,
         type: 3}
       propertyPath: uniqueIdentifier

@@ -22,7 +22,6 @@ namespace RPG.Control
 
         [SerializeField] CursorMapping[] cursorMappings = null;
         [SerializeField] float maxNavMeshProjectionDistance = 1f;
-        [SerializeField] float maxNavPathLength = 40f;
 
         void Awake()
         {
@@ -92,6 +91,8 @@ namespace RPG.Control
             bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {
+                if(!myMover.CanMoveTo(target)) return false;
+                
                 if (Input.GetMouseButton(1))
                 {
                     myMover.StartMoveAction(target, 1f); // 1f full speeed
@@ -114,28 +115,11 @@ namespace RPG.Control
             bool hasCastToNavMesh = NavMesh.SamplePosition(hit.point, out navMeshHit, maxNavMeshProjectionDistance, NavMesh.AllAreas);
             if(!hasCastToNavMesh) return false;
 
-            target = navMeshHit.position;
-
-            NavMeshPath path = new NavMeshPath();
-            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
-            if(!hasPath) return false;
-            if(path.status != NavMeshPathStatus.PathComplete) return false; //disable cursor on surfence where player cant move to
-            if(GetPathLength(path) > maxNavPathLength) return false;
+            target = navMeshHit.position;           
 
             return true;
         }
 
-        float GetPathLength(NavMeshPath path)
-        {
-            float total = 0f;
-            if(path.corners.Length < 2) return total;
-            for (int i = 0; i < path.corners.Length - 1; i++)
-            {
-                //sum all distances from corner to another corner
-                total += Vector3.Distance(path.corners[i], path.corners[i + 1]);
-            }
-            return total;
-        }
 
         void SetCursor(CursorType type)
         {
